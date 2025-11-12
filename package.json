@@ -1,7 +1,7 @@
 {
-  "name": "khairah",
+  "name": "mag",
   "version": "0.1.0",
-  "homepage": "http://khairah-react.thmepresss.com",
+  "homepage": "https://ndeyendour.github.io/mag/",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.12.4",
@@ -31,11 +31,12 @@
     "slick-carousel": "^1.8.1"
   },
   "scripts": {
-  "start": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
-  "build": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
-  "test": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts test"
-}
-,
+    "start": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
+    "build": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
+    "test": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -50,5 +51,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
