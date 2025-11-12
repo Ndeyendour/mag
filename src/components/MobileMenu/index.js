@@ -6,129 +6,133 @@ import './style.css';
 const menus = [
     {
         id: 1,
-        title: 'Home',
+        title: 'Accueil',
         link: '/home',
-        submenu: [
-            {
-                id: 11,
-                title: 'Home style 1',
-                link: '/home'
-            },
-            {
-                id: 12,
-                title: 'Home style 2',
-                link: '/home2'
-            },
-        ]
+        // submenu: [
+        //     {
+        //         id: 11,
+        //         title: 'Home style 1',
+        //         link: '/home'
+        //     },
+        //     {
+        //         id: 12,
+        //         title: 'Home style 2',
+        //         link: '/home2'
+        //     },
+        // ]
     },
 
     {
         id: 2,
-        title: 'About',
+        title: 'A propos',
         link: '/about',
     },
 
 {
     id: 3,
-        title: 'Causes',
+        title: 'Activites',
         link: '/case',
-        submenu: [
-            {
-                id: 31,
-                title: 'Causes',
-                link: '/case'
-            },
-            {
-                id: 32,
-                title: 'Causes Single',
-                link: '/case-single'
-            }
-        ]
+        // submenu: [
+        //     {
+        //         id: 31,
+        //         title: 'Causes',
+        //         link: '/case'
+        //     },
+        //     {
+        //         id: 32,
+        //         title: 'Causes Single',
+        //         link: '/case-single'
+        //     }
+        // ]
     },
 {
     id: 4,
-        title: 'Event',
-        link: '/event',
-        submenu: [
-            {
-                id: 41,
-                title: 'Event',
-                link: '/event'
-            },
-            {
-                id: 42,
-                title: 'Event Single',
-                link: '/event-details'
-            }
-        ]
+        title: 'Partenariat',
+        link: '/donate',
+        // submenu: [
+        //     {
+        //         id: 41,
+        //         title: 'Event',
+        //         link: '/event'
+        //     },
+        //     {
+        //         id: 42,
+        //         title: 'Event Single',
+        //         link: '/event-details'
+        //     }
+        // ]
     },
     {
         id: 7,
-        title: 'Pages',
+        title: 'Actualites',
         link: '/',
         submenu: [
             {
                 id: 71,
-                title: 'About',
-                link: '/about'
+                title: 'formations',
+                link: '#'
             },
             {
                 id: 75,
-                title: 'Donate',
-                link: '/donate'
+                title: 'Conferences',
+                link: '#'
             },
             {
                 id: 76,
-                title: 'Volunteer',
-                link: '/volunteer'
+                title: 'Evenements',
+                link: '#'
             },
     
             {
                 id: 79,
-                title: 'Error 404',
+                title: 'Incubateur',
                 link: '/404'
             },
-            
+             {
+                id: 76,
+                title: 'Coworking et Reunion B to B',
+                link: '#'
+            },
         ]
     },
 
-    {
-        id: 5,
-        title: 'Blog',
-        link: '/blog',
-        submenu: [
-            {
-                id: 51,
-                title: 'Blog',
-                link: '/blog'
-            },
-            {
-                id: 52,
-                title: 'Blog Left sidebar',
-                link: '/blog-left'
-            },
-            {
-                id: 53,
-                title: 'Blog full width',
-                link: '/blog-fullwidth'
-            },
-            {
-                id: 54,
-                title: 'Blog single',
-                link: '/blog-details'
-            },
-            {
-                id: 55,
-                title: 'Blog single Left sidebar',
-                link: '/blog-details-left'
-            },
-            {
-                id: 56,
-                title: 'Blog single Left sidebar',
-                link: '/blog-details-fullwidth'
-            },
-        ]
-    },
+    // {
+    //     id: 5,
+    //     title: 'Blog',
+    //     link: '/blog',
+    //     submenu: [
+    //         {
+    //             id: 51,
+    //             title: 'Blog',
+    //             link: '/blog'
+    //         },
+    //         {
+    //             id: 52,
+    //             title: 'Blog Left sidebar',
+    //             link: '/blog-left'
+    //         },
+    //         {
+    //             id: 53,
+    //             title: 'Blog full width',
+    //             link: '/blog-fullwidth'
+    //         },
+    //         {
+    //             id: 54,
+    //             title: 'Blog single',
+    //             link: '/blog-details'
+    //         },
+    //         {
+    //             id: 55,
+    //             title: 'Blog single Left sidebar',
+    //             link: '/blog-details-left'
+    //         },
+    //         {
+    //             id: 56,
+    //             title: 'Blog single Left sidebar',
+    //             link: '/blog-details-fullwidth'
+    //         },
+    //     ]
+    // },
     {
         id: 88,
         title: 'Contact',
