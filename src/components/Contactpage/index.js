@@ -55,11 +55,11 @@ const ContactPageMAG = () => {
                                         <i className="ti-world"></i>
                                     </div>
                                     <h5>Réseaux sociaux</h5>
-                                    <p>
+                                    {/* <p>
                                         <a href="https://facebook.com/magguediawaye" target="_blank" rel="noreferrer">Facebook</a> |
                                         <a href="https://instagram.com/magguediawaye" target="_blank" rel="noreferrer"> Instagram</a> |
                                         <a href="https://linkedin.com/company/magguediawaye" target="_blank" rel="noreferrer"> LinkedIn</a>
-                                    </p>
+                                    </p> */}
                                 </li>
                             </ul>
                         </div>
