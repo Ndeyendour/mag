@@ -4,14 +4,16 @@ import PageTitle from '../../components/pagetitle'
 import EventSection from '../../components/event'
 import Footer from '../../components/footer'
 import Scrollbar from '../../components/scrollbar'
+import BlogFullwidth from '../../components/BlogFullwidth2';
 
 
 const EventPage =() => {
     return(
         <Fragment>
             <Navbar/>
-            <PageTitle pageTitle={'Our Event'} pagesub={'Event'}/> 
-            <EventSection/>
+            <PageTitle pageTitle={'Nos associations'} pagesub={'Association'}/> 
+            <BlogFullwidth/>
+            {/* <EventSection/> */}
             <Footer/>
             <Scrollbar/>
         </Fragment>

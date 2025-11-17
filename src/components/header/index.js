@@ -39,7 +39,7 @@ const Header = () => {
                                         <li><Link to="/case-single" title="">Coworking et reunion B to B</Link></li>
                                     </ul> */}
                                 </li>
-                                <li><Link to="/donate" title="">Partenariat</Link>
+                                <li><Link to="/event" title="">Associations</Link>
                                     {/* <ul>
                                         <li><Link to="/event" title="">Event</Link></li>
                                         <li><Link to="/event-details" title="">Event Single</Link></li>
