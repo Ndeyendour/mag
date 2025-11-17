@@ -1,172 +1,138 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import SidebarWrap from '../SidebarWrap';
+import './style.css';
 
-import {Link} from 'react-router-dom'
-import SidebarWrap from '../SidebarWrap'
-import simg from '../../images/event-details.jpg'
+const CaseSingle = () => {
+  const [seminars, setSeminars] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-import blog3 from '../../images/blog-details/comments-author/img-1.jpg'
-import blog4 from '../../images/blog-details/comments-author/img-2.jpg'
-import blog5 from '../../images/blog-details/comments-author/img-3.jpg'
+  // Fonction pour charger les séminaires depuis l'API
+  useEffect(() => {
+    const fetchSeminars = async () => {
+      try {
+        const response = await axios.get('http://localhost:5001/api/activite/seminaires');
+        setSeminars(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Erreur lors de la récupération des séminaires:', error);
+        setError('Une erreur est survenue lors de la récupération des séminaires.');
+        setLoading(false);
+      }
+    };
 
-import './style.css'
+    fetchSeminars();
+  }, []);
 
-const CaseSingle = (props) => {
+  const SubmitHandler = (e) => {
+    e.preventDefault();
+  };
 
-    const SubmitHandler = (e) =>{
-        e.preventDefault()
-    }
-
-        return (
-            <div className="tp-case-details-area section-padding">
-            <div className="container">
-                <div className="row">
-                    <div className="col col-lg-8">
-                        <div class="tp-case-details-wrap">
-                            <div class="tp-case-details-text">
-                                <div id="Description">
-                                    <div class="tp-case-details-img">
-                                        <img src={simg} alt="" />
-                                    </div>
-                                    <div class="tp-case-content">
-                                        <div class="tp-case-text-top">
-                                            <h2>Ensure Education for every poor children</h2>
-                                            <div class="progress-section">
-                                                <div class="process">
-                                                    <div class="progress">
-                                                        <div class="progress-bar">
-                                                            <div class="progress-value"><span>65.5</span>%</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <ul>
-                                                <li><span>Raised:</span> $7,000.00</li>
-                                                <li><span>Goal:</span> $8,000.00</li>
-                                                <li><span>Donar:</span> 380</li>
-                                            </ul>
-                                            <div class="case-b-text">
-                                                <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain.</p>
-                                                <p>These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided.</p>
-                                                <p>But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures.</p>
-                                            </div>
-                                            <div class="case-bb-text">
-                                                <h3>We want to ensure the education for the kids.</h3>
-                                                <p>These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure.</p>
-                                                <ul>
-                                                    <li>The wise man therefore always holds in these matters.</li>
-                                                    <li>In a free hour, when our power of choice and when nothing.</li>
-                                                    <li>Else he endures pains to avoid worse pains.</li>
-                                                    <li>We denounce with righteous indignation and dislike men. </li>
-                                                    <li>Which is the same as saying through.</li>
-                                                </ul>
-                                            </div>
-                                            <div class="submit-area sub-btn">
-                                                <Link to="/donate" class="theme-btn submit-btn">Donate Now</Link>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tp-blog-single-section wrap-even">
-                                    <div className="comments-area">
-                                        <div className="comments-section">
-                                            <h3 className="comments-title">Comments</h3>
-                                            <ol className="comments">
-                                                <li className="comment even thread-even depth-1" id="comment-1">
-                                                    <div id="div-comment-1">
-                                                        <div className="comment-theme">
-                                                            <div className="comment-image"> <img src={blog3} alt="" /> </div>
-                                                        </div>
-                                                        <div className="comment-main-area">
-                                                            <div className="comment-wrapper">
-                                                                <div className="comments-meta">
-                                                                    <h4>John Abraham <span className="comments-date">Octobor 28,2018 At 9.00am</span></h4>
-                                                                </div>
-                                                                <div className="comment-area">
-                                                                    <p>I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, </p>
-                                                                    <div className="comments-reply">
-                                                                        <Link className="comment-reply-link" to="/case-single"><i className="fa fa-reply" aria-hidden="true"></i><span>Reply</span></Link>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <ul className="children">
-                                                        <li className="comment">
-                                                            <div>
-                                                                <div className="comment-theme">
-                                                                    <div className="comment-image"> <img src={blog4} alt="" /></div>
-                                                                </div>
-                                                                <div className="comment-main-area">
-                                                                    <div className="comment-wrapper">
-                                                                        <div className="comments-meta">
-                                                                            <h4>Lily Watson <span className="comments-date">Octobor 28,2018 At 9.00am</span></h4>
-                                                                        </div>
-                                                                        <div className="comment-area">
-                                                                            <p>I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, </p>
-                                                                            <div className="comments-reply">
-                                                                                <Link className="comment-reply-link" to="/case-single"><span><i className="fa fa-reply" aria-hidden="true"></i> Reply</span></Link>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <ul>
-                                                                <li className="comment">
-                                                                    <div>
-                                                                        <div className="comment-theme">
-                                                                            <div className="comment-image"><img src={blog5} alt="" /> </div>
-                                                                        </div>
-                                                                        <div className="comment-main-area">
-                                                                            <div className="comment-wrapper">
-                                                                                <div className="comments-meta">
-                                                                                    <h4>John Abraham <span className="comments-date">Octobor 28,2018 At 9.00am</span></h4>
-                                                                                </div>
-                                                                                <div className="comment-area">
-                                                                                    <p>I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, </p>
-                                                                                    <div className="comments-reply">
-                                                                                        <Link className="comment-reply-link" to="/case-single"><span><i className="fa fa-reply" aria-hidden="true"></i> Reply</span></Link>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                    <div className="comment-respond">
-                                        <h3 className="comment-reply-title">Leave a Comment</h3>
-                                        <form onSubmit={SubmitHandler} className="comment-form">
-                                            <div className="form-inputs">
-                                                <input placeholder="Name" type="text" />
-                                                <input placeholder="Email" type="email" />
-                                                <input placeholder="Website" type="url" />
-                                            </div>
-                                            <div className="form-textarea">
-                                                <textarea id="comment" placeholder="Write Your Comments..."></textarea>
-                                            </div>
-                                            <div className="form-submit">
-                                                <input id="submit" value="Reply" type="submit" />
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <SidebarWrap/>
-                </div>
+  // Gestion des états de chargement et d'erreur
+  if (loading) {
+    return (
+      <div className="tp-case-details-area section-padding">
+        <div className="container">
+          <div className="row">
+            <div className="col col-lg-12">
+              <p>Chargement des séminaires...</p>
             </div>
+          </div>
         </div>
-            );
-    }
-    
-    export default CaseSingle;
-          
-          
-          
-          
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="tp-case-details-area section-padding">
+        <div className="container">
+          <div className="row">
+            <div className="col col-lg-12">
+              <p className="error-message">{error}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="tp-case-details-area section-padding">
+      <div className="container">
+        <div className="row">
+          <div className="col col-lg-12">
+            <div className="tp-case-details-wrap">
+              <div className="tp-case-details-text">
+                <div id="Description">
+                  <h2>Liste des séminaires</h2>
+                  
+                  {seminars.length > 0 ? (
+                    seminars.map(seminar => (
+                      // Une row complète pour chaque séminaire
+                      <div className="row seminar-row mb-5" key={seminar._id}>
+                        <div className="col-md-6">
+                          <div className="tp-case-details-img">
+                            <img 
+                              src={seminar.imageUrl} 
+                              alt={seminar.title}
+                              className="img-fluid rounded"
+                              style={{ width: '100%', height: '300px', objectFit: 'cover' }}
+                            />
+                          </div>
+                        </div>
+                        <div className="col-md-6">
+                          <div className="tp-case-text-top">
+                            <h3 className="mb-3">{seminar.title}</h3>
+                            <p className="text-muted mb-3">{seminar.description}</p>
+                            
+                            <div className="seminar-info mb-3">
+                              <p className="mb-2">
+                                <strong>Date :</strong> {new Date(seminar.startDate).toLocaleDateString('fr-FR')}
+                              </p>
+                              <p className="mb-2">
+                                <strong>Lieu :</strong> {seminar.location}
+                              </p>
+                              {seminar.endDate && (
+                                <p className="mb-2">
+                                  <strong>Date de fin :</strong> {new Date(seminar.endDate).toLocaleDateString('fr-FR')}
+                                </p>
+                              )}
+                            </div>
+                            
+                            <div className="case-b-text">
+                              <Link to={`/seminaire/${seminar._id}`} className="theme-btn">
+                                Voir les détails
+                                <i className="fa fa-angle-double-right ms-2" aria-hidden="true"></i>
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        {/* Séparateur entre les séminaires */}
+                        <div className="col-12 mt-4">
+                          <hr className="border-secondary" />
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="row">
+                      <div className="col-12">
+                        <p className="text-center text-muted">Aucun séminaire trouvé.</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* <SidebarWrap /> */}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default CaseSingle;

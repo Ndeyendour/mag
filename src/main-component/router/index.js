@@ -21,6 +21,9 @@ import ContactPage from '../ContactPage'
 import LoginPage from '../LoginPage' 
 import SignUpPage from '../SignUpPage' 
 import ForgotPassword from '../ForgotPassword' 
+import Formations from '../../components/formations';
+import FormationsPage from '../Formation';
+import EventPage2 from '../EventPage2';
       
 
 const AllRoute = () => { 
@@ -34,8 +37,12 @@ const AllRoute = () => {
             <Route path='/home2' component={Homepage2} />
             <Route path='/about' component={AboutPage} />
             <Route path='/case' component={CausePage} />
+            <Route path='/formation' component={FormationsPage} />
+
             <Route path='/case-single' component={CaseSinglePage}/>
-            <Route path='/event' component={EventPage}/>
+            <Route path='/assos' component={EventPage}/>
+            <Route path='/event' component={EventPage2}/>
+
             <Route path='/event-details' component={EventPageSingle}/>
             <Route path='/donate' component={DonatePage}/>
             <Route path='/volunteer' component={VolunteerPage}/> 

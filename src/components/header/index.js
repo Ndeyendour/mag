@@ -39,7 +39,7 @@ const Header = () => {
                                         <li><Link to="/case-single" title="">Coworking et reunion B to B</Link></li>
                                     </ul> */}
                                 </li>
-                                <li><Link to="/event" title="">Associations</Link>
+                                <li><Link to="/assos" title="">Associations</Link>
                                     {/* <ul>
                                         <li><Link to="/event" title="">Event</Link></li>
                                         <li><Link to="/event-details" title="">Event Single</Link></li>
@@ -55,11 +55,11 @@ const Header = () => {
                                 </li> */}
                                 <li><Link to="/blog">Actualites</Link>
                                     <ul>
-                                        <li><Link to="#" title="">Formations</Link></li>
-                                        <li><Link to="#" title="">Conférences</Link></li>
-                                        <li><Link to="#" title="">Evénements</Link></li>
-                                        <li><Link to="#" title="">Incubateur</Link></li>
-                                        <li><Link to="#" title="">Coworking et reunion B to B</Link></li>
+                                        <li><Link to="/formation" title="">Formations</Link></li>
+                                        <li><Link to="/case-single" title="">Conférences</Link></li>
+                                        <li><Link to="/event" title="">Evénements</Link></li>
+                                        <li><Link to="/event-details" title="">Incubateur</Link></li>
+                                        <li><Link to="" title="">Coworking et reunion B to B</Link></li>
                                         {/* <li><Link to="/case" title="">Formations</Link></li>
                                         <li><Link to="/case-single" title="">Conférences</Link></li>
                                         <li><Link to="/event" title="">Evénements</Link></li>

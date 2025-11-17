@@ -1,17 +1,55 @@
-import React from 'react'
-import event1 from '../../images/event/1.jpg'
-import event2 from '../../images/event/2.jpg'
-import event3 from '../../images/event/3.jpg'
-import event4 from '../../images/event/1.png'
-import event5 from '../../images/event/2.png'
-import { Link } from 'react-router-dom'
-
-import './style.css'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import './style.css';
 
 const EventSection = (props) => {
 
+    const [events, setEvents] = useState([]); // État pour stocker les événements récupérés
+    const [loading, setLoading] = useState(true);  // Pour afficher le chargement
+    const [error, setError] = useState(null); // Pour gérer les erreurs
+
     const ClickHandler = () => {
         window.scrollTo(10, 0);
+    }
+
+    // Charger les événements depuis l'API
+    useEffect(() => {
+        const fetchEvents = async () => {
+            try {
+                const response = await axios.get('http://localhost:5001/api/activite/evenements'); // L'URL de ton API
+                setEvents(response.data); // Mettre à jour l'état avec les événements
+                setLoading(false); // Fin du chargement
+            } catch (error) {
+                console.error('Erreur lors de la récupération des événements:', error);
+                setError('Une erreur est survenue lors de la récupération des événements.');
+                setLoading(false); // Fin du chargement même en cas d'erreur
+            }
+        };
+
+        fetchEvents();
+    }, []);
+
+    // Vérifier si les événements sont en cours de chargement
+    if (loading) {
+        return (
+            <div className="event-area section-padding">
+                <div className="container">
+                    <p>Chargement des événements...</p>
+                </div>
+            </div>
+        );
+    }
+
+    // Afficher un message d'erreur si une erreur est survenue
+    if (error) {
+        return (
+            <div className="event-area section-padding">
+                <div className="container">
+                    <p>{error}</p>
+                </div>
+            </div>
+        );
     }
 
     return (
@@ -34,106 +72,44 @@ const EventSection = (props) => {
 
                 <div className="row">
                     <div className="col-12">
-
-                        {/* Événement 1 */}
-                        <div className="event-item">
-                            <div className="event-img">
-                                <img src={event1} alt="Conférence du samedi" />
-                            </div>
-                            <div className="event-text">
-                                <div className="event-left">
-                                    <div className="event-l-text">
-                                        <span>NOV</span>
-                                        <h4>16</h4>
+                        {events.length > 0 ? events.map((event) => (
+                            <div className="event-item" key={event._id}>
+                                <div className="event-img">
+                                    <img src={event.imageUrl || '/default-image.jpg'} alt={event.title} />
+                                </div>
+                                <div className="event-text">
+                                    <div className="event-left">
+                                        <div className="event-l-text">
+                                            <span>{new Date(event.startDate).toLocaleString('default', { month: 'short' }).toUpperCase()}</span>
+                                            <h4>{new Date(event.startDate).getDate()}</h4>
+                                        </div>
+                                    </div>
+                                    <div className="event-right">
+                                        <ul>
+                                            <li><i className="ti-time"></i> {new Date(event.startDate).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {new Date(event.endDate).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</li>
+                                            <li><i className="ti-location-pin"></i> {event.location}</li>
+                                        </ul>
+                                        <h2>
+                                            <Link onClick={ClickHandler} to={`/evenements/${event._id}`}>
+                                                {event.title}
+                                            </Link>
+                                        </h2>
+                                        <p>{event.description}</p>
                                     </div>
                                 </div>
-                                <div className="event-right">
-                                    <ul>
-                                        <li><i className="ti-time"></i> 10h00 - 13h00</li>
-                                        <li><i className="ti-location-pin"></i> Maison des Associations, Guédiawaye</li>
-                                    </ul>
-                                    <h2>
-                                        <Link onClick={ClickHandler} to="/evenements/conference-samedi">
-                                            Conférence du samedi : “Jeunesse et innovation sociale”
-                                        </Link>
-                                    </h2>
-                                    <p>
-                                        Une rencontre citoyenne pour échanger sur le rôle des jeunes dans le développement
-                                        local et la création d’initiatives communautaires durables.
-                                    </p>
-                                </div>
                             </div>
-                        </div>
-
-                        {/* Événement 2 */}
-                        <div className="event-item">
-                            <div className="event-img">
-                                <img src={event2} alt="Atelier de formation" />
-                            </div>
-                            <div className="event-text">
-                                <div className="event-left">
-                                    <div className="event-l-text">
-                                        <span>NOV</span>
-                                        <h4>23</h4>
-                                    </div>
-                                </div>
-                                <div className="event-right">
-                                    <ul>
-                                        <li><i className="ti-time"></i> 09h30 - 17h00</li>
-                                        <li><i className="ti-location-pin"></i> Salle de formation, MAG</li>
-                                    </ul>
-                                    <h2>
-                                        <Link onClick={ClickHandler} to="/evenements/atelier-gestion">
-                                            Atelier : Gestion de projet et financement associatif
-                                        </Link>
-                                    </h2>
-                                    <p>
-                                        Une journée de formation pratique pour renforcer les compétences en planification,
-                                        suivi et mobilisation de ressources des associations locales.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Événement 3 */}
-                        <div className="event-item">
-                            <div className="event-img">
-                                <img src={event3} alt="Forum de l'entrepreneuriat" />
-                            </div>
-                            <div className="event-text">
-                                <div className="event-left">
-                                    <div className="event-l-text">
-                                        <span>DÉC</span>
-                                        <h4>07</h4>
-                                    </div>
-                                </div>
-                                <div className="event-right">
-                                    <ul>
-                                        <li><i className="ti-time"></i> 09h00 - 18h00</li>
-                                        <li><i className="ti-location-pin"></i> Esplanade de la Mairie de Guédiawaye</li>
-                                    </ul>
-                                    <h2>
-                                        <Link onClick={ClickHandler} to="/evenements/forum-entrepreneuriat">
-                                            Forum de l’entrepreneuriat et de l’innovation locale
-                                        </Link>
-                                    </h2>
-                                    <p>
-                                        Un espace de rencontre entre jeunes entrepreneurs, incubateurs et partenaires
-                                        pour promouvoir la créativité, l’emploi et les startups de Guédiawaye.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
+                        )) : (
+                            <p>Aucun événement trouvé.</p>
+                        )}
                     </div>
                 </div>
             </div>
 
             {/* Éléments décoratifs */}
-            <div className="shape1"><img src={event4} alt="forme décorative" /></div>
-            <div className="shape2"><img src={event5} alt="forme décorative" /></div>
+            <div className="shape1"><img src="/path/to/your/decorative/image1.jpg" alt="forme décorative" /></div>
+            <div className="shape2"><img src="/path/to/your/decorative/image2.jpg" alt="forme décorative" /></div>
         </div>
-    )
-}
+    );
+};
 
 export default EventSection;

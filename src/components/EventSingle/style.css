@@ -149,3 +149,10 @@ margin-top: 30px;
 .sub-btn .theme-btn{
 padding-right: 27px;
 }
+.incubator-image {
+    width: 100%;           /* L'image prend toute la largeur de son conteneur */
+    height: auto;          /* Laisse la hauteur s'ajuster proportionnellement */
+    max-width: 1200px;     /* Limite la largeur maximale de l'image à 1200px (ou la largeur de l'écran) */
+    margin: 0 auto;        /* Centrer l'image horizontalement */
+    display: block;        /* Affiche l'image comme un élément de bloc pour l'aligner proprement */
+}
